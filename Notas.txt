@@ -1,0 +1,18 @@
+Probar la tecnología Hyper-V para virtualización.
+
+Ejemplo usando Hyper-V:
+minikube start --driver=hyperv
+
+Deployment: Script en formato yaml para correr los Pods.
+Los pods contienen contenedores.
+
+Service: Script que hace que los pods sean accesibles.
+
+Comandos importants kubernetes:
+
+kubectl get pods
+kubectl get deployment
+kubectl get services
+
+minikube ip
+
