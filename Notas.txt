@@ -1,3 +1,10 @@
+Orden levantaminto services:
+1. config-service
+2. eureka-service
+3. todos los servicios
+4. gateway-service
+
+
 Probar la tecnología Hyper-V para virtualización.
 
 Ejemplo usando Hyper-V:
