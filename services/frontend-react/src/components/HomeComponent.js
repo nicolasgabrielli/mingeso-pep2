@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import cow from '../images/cow.gif';
+import cow from '../images/polish-cow-polish.gif';
 import background from '../images/windowsxp.jpg';
 import '../App.css';
 import '../fonts/TitilliumWeb-Regular.ttf';
@@ -8,18 +8,22 @@ import '../fonts/TitilliumWeb-Bold.ttf';
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color: #343a40;
-    background-image: url(${background});
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 100%;
     margin: 0;
     padding: 0;
     font-family: 'Titillium Web', sans-serif;
   }
 `;
+
+const MainContainer = styled.div`
+  width: 100%;
+  height: 100vh;
+  background-color: #343a40;
+  background-image: url(${background});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+`;
+
 
 const HomeStyle = styled.div`
   .btn-lg {
@@ -98,7 +102,7 @@ const Button = styled.a`
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.7);
+      background-color: rgba(255, 255, 255, 0.5);
     }
   }
 `;
@@ -112,6 +116,7 @@ export default function Home() {
   return (
     <>
       <GlobalStyle />
+      <MainContainer>
       <HomeStyle>
         <Navbar className="navbar bg-light">
           <div className="container-fluid">
@@ -146,6 +151,7 @@ export default function Home() {
           </BoxContainer>
         </Container>
       </HomeStyle>
+    </MainContainer>
     </>
   );
 }
