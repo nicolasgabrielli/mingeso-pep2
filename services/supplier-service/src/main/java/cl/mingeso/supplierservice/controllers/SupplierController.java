@@ -10,12 +10,12 @@ import cl.mingeso.supplierservice.services.SupplierService;
 import cl.mingeso.supplierservice.entities.SupplierEntity;
 
 @RestController
-@RequestMapping("/suppliers")
+@RequestMapping("/supplier")
 public class SupplierController {
     @Autowired
     SupplierService supplierService;
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<SupplierEntity>> getSuppliers() {
         List<SupplierEntity> suppliers = supplierService.getAllSuppliers();
         if(suppliers.isEmpty()){

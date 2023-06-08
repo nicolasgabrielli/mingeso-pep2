@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: erueka-service
+  cloud:
+    fail-fast: true
+    retry:
+      maxAttempts: 200
+      minInterval: 10000
+    enabled: true
+    uri: http://localhost:8081
