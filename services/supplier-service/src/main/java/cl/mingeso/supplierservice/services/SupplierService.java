@@ -18,12 +18,7 @@ public class SupplierService {
         return supplierRepository.findById(id).orElse(null);
     }
 
-    public void createSupplier(String name, int code, String category, String retention) {
-        SupplierEntity supplier = new SupplierEntity();
-        supplier.setName(name);
-        supplier.setCode(code);
-        supplier.setCategory(category);
-        supplier.setRetention(retention);
+    public void createSupplier(SupplierEntity supplier) {
         supplierRepository.save(supplier);
     }
 

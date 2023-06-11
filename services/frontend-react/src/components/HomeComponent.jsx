@@ -130,7 +130,7 @@ export default function Home() {
           <BoxContainer className="box-center">
             <div className="p-2 flex-fill bd-highlight">
               <Button
-                href="/suppliers"
+                href="/supplier"
                 className="btn btn-primary btn-lg btn-block btn-light rounded-pill"
                 role="button"
                 aria-pressed="true"
