@@ -5,6 +5,7 @@ import background from '../images/windowsxp.jpg';
 import '../App.css';
 import '../fonts/TitilliumWeb-Regular.ttf';
 import '../fonts/TitilliumWeb-Bold.ttf';
+import axios from 'axios';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -102,7 +103,6 @@ const Table = styled.table`
   font-family: Regular, sans-serif;
 `;
 
-
 class SupplierListComponent extends Component {
   constructor(props) {
     super(props)
@@ -112,9 +112,11 @@ class SupplierListComponent extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:8080/suppliers')
-      .then(response => response.json())
-      .then(data => this.setState({ suppliers: data }))
+    axios.get("/supplier", { headers: { "Access-Control-Allow-Origin": "*" }})
+      .then(response => response.data)
+      .then((data) => {
+        this.setState({ suppliers: data })
+      });
   }
 
   render() {
@@ -139,7 +141,7 @@ class SupplierListComponent extends Component {
             </Navbar>
             <div className="f">
               <TableContainer>
-                <Table class="table button-text table-dark">
+                <Table className="table button-text table-dark">
                   <thead>
                     <tr>
                       <th>Código</th>

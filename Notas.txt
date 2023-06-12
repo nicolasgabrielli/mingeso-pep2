@@ -4,6 +4,11 @@ Orden levantaminto services:
 3. todos los servicios
 4. gateway-service
 
+Modulos instalados:
+styled-components
+bootstrap
+axios
+sweetalert2
 
 Probar la tecnología Hyper-V para virtualización.
 

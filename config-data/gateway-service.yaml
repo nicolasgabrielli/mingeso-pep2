@@ -25,7 +25,7 @@ spring:
           uri: lb://fileupload-service
           predicates:
             - Path=/fileupload/**
-        - id: pet-service
+        - id: summary-service
           uri: lb://summary-service
           predicates:
             - Path=/summary/**
