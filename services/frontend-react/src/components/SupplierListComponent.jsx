@@ -112,7 +112,7 @@ class SupplierListComponent extends Component {
   }
 
   componentDidMount() {
-    axios.get("/supplier", { headers: { "Access-Control-Allow-Origin": "*" }})
+    axios.get("/supplier")
       .then(response => response.data)
       .then((data) => {
         this.setState({ suppliers: data })
@@ -120,6 +120,8 @@ class SupplierListComponent extends Component {
   }
 
   render() {
+    const { suppliers } = this.state;
+
     return (
       <>
         <GlobalStyle />
@@ -151,7 +153,7 @@ class SupplierListComponent extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {this.state.suppliers.map((supplier) => (
+                    {suppliers.map((supplier) => (
                       <tr key={supplier.code}>
                         <td>{supplier.code}</td>
                         <td>{supplier.name}</td>

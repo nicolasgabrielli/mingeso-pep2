@@ -1,4 +1,5 @@
 package cl.mingeso.supplierservice.controllers;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,15 +19,17 @@ public class SupplierController {
     SupplierService supplierService;
 
     @GetMapping
+    @CrossOrigin(origins = "*")
     public ResponseEntity<List<SupplierEntity>> getSuppliers() {
         List<SupplierEntity> suppliers = supplierService.getAllSuppliers();
         if(suppliers.isEmpty()){
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.ok(suppliers);
         }
         return ResponseEntity.ok(suppliers);
     }
 
     @PostMapping
+    @CrossOrigin(origins = "*")
     public ResponseEntity<SupplierEntity> createSupplier(@RequestBody SupplierEntity supplier) {
         supplierService.createSupplier(supplier);
         return ResponseEntity.ok(supplier);
