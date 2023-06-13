@@ -63,25 +63,10 @@ public class SummaryService {
         fileUploadsData = Arrays.asList(fileUploadsDataArray);
         fileUploadsType2Data = Arrays.asList(fileUploadsType2DataArray);
 
-        System.out.println("Suppliers: " + suppliersData.size());
-        System.out.println("FileUploads: " + fileUploadsData.size());
-        System.out.println("FileUploadsType2: " + fileUploadsType2Data.size());
-        
-        System.out.println(suppliersData.toString());
-        for (int i = 0; i < suppliersData.size(); i++){
-            System.out.println(suppliersData.get(i).toString());
-        }
-
         // Transforming the data into arraylist
         ArrayList<SupplierModel> suppliers = new ArrayList<SupplierModel>(suppliersData);
         ArrayList<FileUploadType1Model> fileUploads = new ArrayList<FileUploadType1Model>(fileUploadsData);
         ArrayList<FileUploadType2Model> fileUploadsType2 = new ArrayList<FileUploadType2Model>(fileUploadsType2Data);
-        
-        System.out.println("Llegué hasta aquí");
-        System.out.println(suppliers.toString());
-        for (int i = 0; i < suppliers.size(); i++){
-            System.out.println(suppliers.get(i).toString());
-        }
 
         ArrayList<SummaryModel> summaries = new ArrayList<SummaryModel>();
         SummaryModel summary;
