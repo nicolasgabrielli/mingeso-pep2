@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import SupplierService from '../services/SupplierService';
+import FileUploadService from '../services/FileUploadService';
 import cow from '../images/polish-cow-polish.gif';
 import background from '../images/windowsxp.jpg';
 import '../App.css';
@@ -133,8 +133,8 @@ const FileUploadComponent = () => {
                     confirmButtonText: 'Aceptar',
                 });
                 let formData = new FormData();
-                formData.append('file', file);
-                SupplierService.uploadFile(formData).then((res) => {
+                formData.append("file", file);
+                FileUploadService.uploadFile(formData).then((res) => {
                     console.log(res.data);
                 });
             }
@@ -158,8 +158,8 @@ const FileUploadComponent = () => {
                             <span className="navbar-brand mb-0">
                                 <h1>MilkStgo</h1>
                             </span>
-                            <a className="btn btn-outline-light" href="/summary" role="button">
-                                <span className="button-text">Ver Planilla de Pagos</span>
+                            <a className="btn btn-outline-light" href="/file-info" role="button">
+                                <span className="button-text">Ver Información de los Archivos</span>
                             </a>
                             <a className="btn btn-outline-light" href="/" role="button">
                                 <span className="button-text">Volver</span>
@@ -169,7 +169,7 @@ const FileUploadComponent = () => {
                     </Navbar>
                     <FormContainer>
                         <FormTitle>Subir Archivo</FormTitle>
-                        <input class="form-control" type="file" id="formFileMultiple" multiple onChange={(e) => setFile(e.target.value)}/>
+                        <input class="form-control" type="file" id="formFileMultiple" multiple onChange={(e) => setFile(e.target.files[0])}/>
                         <HelpText>Seleccione un archivo.</HelpText>
                         <FormButton className="btn btn-success" onClick={uploadFile}>
                             Guardar
