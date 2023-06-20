@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fileupload-deployment
+  labels:
+    app: fileupload-deployment
+spec:
+  selector:
+    matchLabels:
+      app: fileupload-deployment
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: fileupload-deployment
+    spec:
+      containers:
+      - name: fileupload-deployment
+        image: nicolasgabrielli/file-upload
+        ports:
+        - containerPort: 8083
