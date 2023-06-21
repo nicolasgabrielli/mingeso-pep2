@@ -112,7 +112,7 @@ class SupplierListComponent extends Component {
   }
 
   componentDidMount() {
-    axios.get("/supplier")
+    axios.get("gateway-service:8090/supplier")
       .then(response => response.data)
       .then((data) => {
         this.setState({ suppliers: data })

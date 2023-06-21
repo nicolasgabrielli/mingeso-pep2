@@ -15,7 +15,45 @@ spec:
         app: supplier-deployment
     spec:
       containers:
-      - name: supplier-deployment
-        image: nicolasgabrielli/supplier
-        ports:
-        - containerPort: 8082
+        - name: supplier-deployment
+          image: nicolasgabrielli/supplier
+          ports:
+            - containerPort: 8082
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: POSTGRES_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: POSTGRES_PASSWORD
+            - name: POSTGRES_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: POSTGRES_HOST
+            - name: POSTGRES_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: POSTGRES_PORT
+            - name: POSTGRES_DATABASE
+              value: supplierdb
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: supplier-service
+  labels:
+    app: supplier-service
+spec:
+  selector:
+    app: supplier-deployment
+  ports:
+    - protocol: TCP
+      port: 8082
+      targetPort: 8082
+  type: LoadBalancer
