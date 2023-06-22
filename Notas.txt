@@ -33,8 +33,9 @@ kubectl apply -f app-deployment.yml
 kubectl apply -f app-service.yml
 minikube service app-service
 minikube dashboard
-
 minikube ip
+
+minikube tunnel
 
 Para ver terminal de los pods:
 - Verificar nombre del pod: kubectl get pods

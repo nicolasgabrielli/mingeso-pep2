@@ -32,6 +32,7 @@ pipeline{
         }
         stage("Build JAR Eureka"){
             steps {
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkins-token1', url: 'https://github.com/nicolasgabrielli/mingeso-pep2']])
                 dir("services/eureka-service"){
                     sh "ls"
                     sh "mvn clean install -DskipTests"    
@@ -56,6 +57,7 @@ pipeline{
             }
         }
         stage("Build JAR Supplier"){
+            checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkins-token1', url: 'https://github.com/nicolasgabrielli/mingeso-pep2']])
             steps {
                 dir("services/supplier-service"){
                     sh "ls"
@@ -81,6 +83,7 @@ pipeline{
             }
         }
         stage("Build JAR File-Upload"){
+            checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkins-token1', url: 'https://github.com/nicolasgabrielli/mingeso-pep2']])
             steps {
                 dir("services/fileupload-service"){
                     sh "ls"
@@ -106,6 +109,7 @@ pipeline{
             }
         }
         stage("Build JAR Summary"){
+            checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkins-token1', url: 'https://github.com/nicolasgabrielli/mingeso-pep2']])
             steps {
                 dir("services/summary-service"){
                     sh "ls"
@@ -131,6 +135,7 @@ pipeline{
             }
         }
         stage("Build JAR Gateway"){
+            checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkins-token1', url: 'https://github.com/nicolasgabrielli/mingeso-pep2']])
             steps {
                 dir("services/gateway-service"){
                     sh "ls"
