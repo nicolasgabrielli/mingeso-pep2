@@ -112,7 +112,7 @@ class SummaryComponent extends Component {
   }
 
   componentDidMount() {
-    axios.get("gateway-service:8090/summary")
+    axios.get("gateway-service/summary")
       .then(response => response.data)
       .then((data) => {
         this.setState({ summaries: data })

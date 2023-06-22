@@ -7,10 +7,10 @@ spring:
   cloud:
     config:
       enabled: true
-      uri: http://config-service:8081
+      uri: http://config-service/
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://postgres-service:5432/fileuploaddb
+    url: jdbc:postgresql://${POSTGRES_HOST}/${POSTGRES_DATABASE}
     username: postgres
     password: postgresql
   jpa:
