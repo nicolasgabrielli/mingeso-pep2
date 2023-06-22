@@ -11,6 +11,7 @@ axios
 sweetalert2
 
 Comandos Docker:
+mvn clean install -DskipTests
 docker build -t nicolasgabrielli/*nombre servicio* .
 docker push nicolasgabrielli/*nombre servicio*
 
@@ -35,3 +36,21 @@ minikube dashboard
 
 minikube ip
 
+Para ver terminal de los pods:
+- Verificar nombre del pod: kubectl get pods
+- Acceder a los logs del pod: kubectl logs <nombre-del-pod>
+- Si se quiere ver en tiempo real: kubectl logs -f <nombre-del-pod>
+
+Para borrar todo:
+kubectl delete daemonsets,replicasets,services,deployments,pods,rc,ingress --all --all-namespaces
+
+
+
+Comandos CopyPaste para inicializar servicios:
+kubectl apply -f postgresql-configmap.yml -f postgresql-deployment.yml
+kubectl apply -f config-deployment.yml
+kubectl apply -f eureka-deployment.yml
+kubectl apply -f supplier-deployment.yml
+kubectl apply -f fileupload-deployment.yml
+kubectl apply -f summary-deployment.yml
+kubectl apply -f gateway-deployment.yml

@@ -1,0 +1,159 @@
+pipeline{
+    agent any
+    tools {
+        maven "maven"
+    }
+    stages {
+        stage("Build JAR Config"){
+            steps {
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkins-token1', url: 'https://github.com/nicolasgabrielli/mingeso-pep2']])
+                dir("services/config-service"){
+                    sh "ls"
+                    sh "mvn clean install -DskipTests"    
+                }
+            }
+        }
+        stage("Build Config Image"){
+            steps {
+                dir("services/config-service"){
+                    sh "docker build -t nicolasgabrielli/config ."
+                }
+            }
+        }
+        stage("Push Config Image"){
+            steps {
+                dir("services/config-service"){
+                    withCredentials([string(credentialsId: "dckrhubpassword", variable: "dckpass")]) {
+                        sh "docker login -u nicolasgabrielli -p $dckpass"
+                    }
+                    sh "docker push nicolasgabrielli/config"
+                }
+            }
+        }
+        stage("Build JAR Eureka"){
+            steps {
+                dir("services/eureka-service"){
+                    sh "ls"
+                    sh "mvn clean install -DskipTests"    
+                }
+            }
+        }
+        stage("Build Eureka Image"){
+            steps {
+                dir("services/eureka-service"){
+                    sh "docker build -t nicolasgabrielli/eureka ."
+                }
+            }
+        }
+        stage("Push Eureka Image"){
+            steps {
+                dir("services/eureka-service"){
+                    withCredentials([string(credentialsId: "dckrhubpassword", variable: "dckpass")]) {
+                        sh "docker login -u nicolasgabrielli -p $dckpass"
+                    }
+                    sh "docker push nicolasgabrielli/eureka"
+                }
+            }
+        }
+        stage("Build JAR Supplier"){
+            steps {
+                dir("services/supplier-service"){
+                    sh "ls"
+                    sh "mvn clean install -DskipTests"    
+                }
+            }
+        }
+        stage("Build Supplier Image"){
+            steps {
+                dir("services/supplier-service"){
+                    sh "docker build -t nicolasgabrielli/supplier ."
+                }
+            }
+        }
+        stage("Push Supplier Image"){
+            steps {
+                dir("services/supplier-service"){
+                    withCredentials([string(credentialsId: "dckrhubpassword", variable: "dckpass")]) {
+                        sh "docker login -u nicolasgabrielli -p $dckpass"
+                    }
+                    sh "docker push nicolasgabrielli/supplier"
+                }
+            }
+        }
+        stage("Build JAR File-Upload"){
+            steps {
+                dir("services/fileupload-service"){
+                    sh "ls"
+                    sh "mvn clean install -DskipTests"    
+                }
+            }
+        }
+        stage("Build File-Upload Image"){
+            steps {
+                dir("services/fileupload-service"){
+                    sh "docker build -t nicolasgabrielli/file-upload ."
+                }
+            }
+        }
+        stage("Push File-Upload Image"){
+            steps {
+                dir("services/fileupload-service"){
+                    withCredentials([string(credentialsId: "dckrhubpassword", variable: "dckpass")]) {
+                        sh "docker login -u nicolasgabrielli -p $dckpass"
+                    }
+                    sh "docker push nicolasgabrielli/file-upload"
+                }
+            }
+        }
+        stage("Build JAR Summary"){
+            steps {
+                dir("services/summary-service"){
+                    sh "ls"
+                    sh "mvn clean install -DskipTests"    
+                }
+            }
+        }
+        stage("Build Summary Image"){
+            steps {
+                dir("services/summary-service"){
+                    sh "docker build -t nicolasgabrielli/summary ."
+                }
+            }
+        }
+        stage("Push Summary Image"){
+            steps {
+                dir("services/summary-service"){
+                    withCredentials([string(credentialsId: "dckrhubpassword", variable: "dckpass")]) {
+                        sh "docker login -u nicolasgabrielli -p $dckpass"
+                    }
+                    sh "docker push nicolasgabrielli/summary"
+                }
+            }
+        }
+        stage("Build JAR Gateway"){
+            steps {
+                dir("services/gateway-service"){
+                    sh "ls"
+                    sh "mvn clean install -DskipTests"    
+                }
+            }
+        }
+        stage("Build Gateway Image"){
+            steps {
+                dir("services/gateway-service"){
+                    sh "docker build -t nicolasgabrielli/gateway ."
+                }
+            }
+        }
+        stage("Push Gateway Image"){
+            steps {
+                dir("services/gateway-service"){
+                    withCredentials([string(credentialsId: "dckrhubpassword", variable: "dckpass")]) {
+                        sh "docker login -u nicolasgabrielli -p $dckpass"
+                    }
+                    sh "docker push nicolasgabrielli/gateway"
+                }
+            }
+        }
+    }
+}
