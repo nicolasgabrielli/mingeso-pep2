@@ -1,1 +1,1 @@
-CREATE DATABASE IF NOT EXISTS supplierdb;
+CREATE DATABASE supplierdb;

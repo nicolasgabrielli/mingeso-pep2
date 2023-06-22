@@ -55,3 +55,5 @@ kubectl apply -f supplier-deployment.yml
 kubectl apply -f fileupload-deployment.yml
 kubectl apply -f summary-deployment.yml
 kubectl apply -f gateway-deployment.yml
+
+kubectl exec -it postgres-deployment-64c8584948-ms64p -- psql -U postgres -d postgres
