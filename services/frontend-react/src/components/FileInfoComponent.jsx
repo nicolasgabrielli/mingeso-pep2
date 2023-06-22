@@ -119,7 +119,7 @@ class FileInfoComponent extends Component {
         this.setState({ filesType1: data })
       });
 
-    axios.get("gateway-service/fileupload/getFileType2Info")
+    axios.get("gateway-service:8090/fileupload/getFileType2Info")
         .then(response => response.data)
         .then((data) => {
             this.setState({ filesType2: data })
