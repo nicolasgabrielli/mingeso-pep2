@@ -20,6 +20,10 @@ spec:
           ports:
             - containerPort: 8082
           env:
+            - name: eureka.client.serviceUrl.defaultZone
+              value: http://eureka-service:8761/eureka/
+            - name: eureka.instance.preferIpAddress
+              value: "true"
             - name: POSTGRES_USER
               valueFrom:
                 configMapKeyRef:
