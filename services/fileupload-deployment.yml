@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: fileupload-deployment
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -24,6 +24,8 @@ spec:
               value: http://eureka-service:8761/eureka/
             - name: eureka.instance.preferIpAddress
               value: "true"
+            - name: spring.cloud.config.uri
+              value: http://config-service:8081
             - name: POSTGRES_USER
               valueFrom:
                 configMapKeyRef:
@@ -60,4 +62,4 @@ spec:
     - protocol: TCP
       port: 8083
       targetPort: 8083
-  type: NodePort
+  type: LoadBalancer

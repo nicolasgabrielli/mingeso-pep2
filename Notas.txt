@@ -15,8 +15,11 @@ mvn clean install -DskipTests
 docker build -t nicolasgabrielli/*nombre servicio* .
 docker push nicolasgabrielli/*nombre servicio*
 
-Comando para iniciar minikube:
-minikube start
+Comando para iniciar minikube con hyperv:
+minikube start --driver=hyperv
+
+Comando para ingresar más memoria y cores:
+minikube start --driver=hyperv --memory 8192 --cpus 4
 
 Deployment: Script en formato yaml para correr los Pods.
 Los pods contienen contenedores.
@@ -45,8 +48,6 @@ Para ver terminal de los pods:
 Para borrar todo:
 kubectl delete daemonsets,replicasets,services,deployments,pods,rc,ingress --all --all-namespaces
 
-
-
 Comandos CopyPaste para inicializar servicios:
 kubectl apply -f postgresql-configmap.yml -f postgresql-deployment.yml
 kubectl apply -f config-deployment.yml
@@ -57,4 +58,5 @@ kubectl apply -f summary-deployment.yml
 kubectl apply -f gateway-deployment.yml
 kubectl apply -f frontend-deployment.yml
 
-kubectl exec -it postgres-deployment-64c8584948-zsjns -- psql -U postgres -d postgres
+kubectl exec -it postgres-deployment-64c8584948-d8gkt -- psql -U postgres -d postgres
+CREATE DATABASE supplierdb;CREATE DATABASE fileuploaddb;CREATE DATABASE summarydb;

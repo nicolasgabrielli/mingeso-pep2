@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: frontend-deployment
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -33,4 +33,4 @@ spec:
     - protocol: TCP
       port: 3000
       targetPort: 3000
-  type: NodePort
+  type: LoadBalancer
