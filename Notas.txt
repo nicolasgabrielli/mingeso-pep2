@@ -60,3 +60,5 @@ kubectl apply -f frontend-deployment.yml
 
 kubectl exec -it postgres-deployment-64c8584948-d8gkt -- psql -U postgres -d postgres
 CREATE DATABASE supplierdb;CREATE DATABASE fileuploaddb;CREATE DATABASE summarydb;
+
+kubectl port-forward svc/config-service 8081:8081
